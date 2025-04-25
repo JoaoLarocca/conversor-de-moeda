@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Conversor de Moedas</title>
+</head>
+<body>
+    <header>
+        <h1>Conversor de Moedas</h1>
+    </header>
+    
+    <div class="container">
+        <form method="POST">
+            <label for="moeda_origem">Moeda de Origem (ex: USD):</label>
+            <input type="text" name="moeda_origem" required>
+            
+            <label for="valor">Valor a ser convertido:</label>
+            <input type="text" name="valor" required>
+            
+            <label for="moedas_destino">Moedas de Destino (ex: EUR, GBP):</label>
+            <input type="text" name="moedas_destino" required>
+            
+            <button type="submit">Converter</button>
+        </form>
+        
+        {% if resultados %}
+            <h2>Resultados:</h2>
+            <ul>
+                {% for resultado in resultados %}
+                    <li>{{ resultado }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="error-messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Meu Conversor de Moedas. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
