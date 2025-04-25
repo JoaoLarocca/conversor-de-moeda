@@ -1,0 +1,13 @@
+# Ambiente virtual
+myenv/
+
+# Arquivos do VS Code
+.vscode/
+
+# Arquivos Python compilados
+__pycache__/
+*.pyc
+
+# Outros
+*.log
+.env
